@@ -11,8 +11,8 @@ public class binarytree {
             this.left = null;
             this.right = null;
         }
-    }   
-    
+    } 
+
     static class BinaryTree {
         static int idx = -1; // so that we can increment it to the length of the array.
         
