@@ -1,4 +1,5 @@
 package DSA_Concepts;
+import java.util.ArrayList;
 public class binarysearchtree {
     static class Node{
         int data;
@@ -80,6 +81,42 @@ public class binarysearchtree {
         }
         return root;
     }
+    public static void printInRange(Node root,int X,int Y){
+        if(root==null){
+            return;
+        }
+        if(root.data>= X && root.data<=Y){
+            printInRange(root.left, X, Y);
+            System.out.print(root.data+" ");
+            printInRange(root.right, X, Y);
+        }
+        else if(root.data >=Y){
+            printInRange(root.left, X, Y);
+        }
+        else{
+            printInRange(root.right, X, Y);
+        }
+    }
+    public static void printPath(ArrayList<Integer> path){
+        for(int i=0;i<path.size(); i++){
+            System.out.print(path.get(i)+"->");
+        }
+        System.out.println();
+    }
+    public static void rootToLeafPaths(Node root,ArrayList<Integer> path){
+        if(root==null){
+            return;
+        }
+        path.add(root.data);
+        //leaf
+        if(root.left==null && root.right == null){
+            printPath(path);
+        }else{
+            rootToLeafPaths(root.left, path);
+            rootToLeafPaths(root.right, path);
+        }
+        path.remove(path.size()-1);
+    }
     public static void main(String args[]){
         int values[] = {5,1,3,4,2,7};
         Node root= null;
@@ -99,6 +136,7 @@ public class binarysearchtree {
         inorder(root);
         delete(root,5);
         inorder(root);
-
+        printInRange(root, 6, 10);
+        rootToLeafPaths(root, new ArrayList<>());
     }
 }
