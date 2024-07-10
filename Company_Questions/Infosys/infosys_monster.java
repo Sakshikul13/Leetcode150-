@@ -1,4 +1,4 @@
-package Company_Questions;
+package Company_Questions.Infosys;
 
 import java.util.Arrays;
 import java.util.Comparator;
